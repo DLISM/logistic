@@ -1,3 +1,4 @@
+/src/main/resources/static/libs/webix/
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -31,3 +32,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/static/libs/webix/
+/src/main/resources/static/libs/webix/
