@@ -1,10 +1,32 @@
-webix.ready(function(){
-    webix.ui({
-        type:"line",
-        container:"app",
-        rows:[
-            { template:"View 1" },
-            { template:"View 2" }
-        ]
+requirejs.config({
+    baseUrl:'js'
+})
+
+function buildRoute(view){
+    return function (){
+        webix.ui(
+            {
+                id: "root",
+                rows:[
+                    view
+                ]
+            }, $$("root"))
+    }
+}
+
+require(['views/main', 'views/cars'],function (main, cars) {
+    webix.ready(function () {
+        webix.ui(
+            {
+
+                container: "app",
+            }
+        );
     });
+
+
+    routie({
+        '':buildRoute(main),
+        'cars':buildRoute(cars)
+    })
 });
