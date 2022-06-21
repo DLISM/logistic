@@ -33,16 +33,22 @@ define(function() {
                                 return col.id===id.column
                             })
 
-                           require([column.dialogUrl], function (dialogPage) {
-                               webix.ui({
-                                   view: "window",
-                                   head: "Choose an item",
-                                   width: 400,
-                                   position: 'center',
-                                   modal: true,
-                                   body: dialogPage
-                               }).show()
-                           })
+                            var parentTable= this
+
+                            if(column.dialogUrl) {
+                                require([column.dialogUrl], function (dialogPage) {
+                                    webix.ui({
+                                        view: "window",
+                                        head: "Choose an item",
+                                        width: 400,
+                                        position: 'center',
+                                        modal: true,
+                                        body: dialogPage,
+                                        parentTable: parentTable,
+                                        cell: id
+                                    }).show()
+                                })
+                            }
                         }
                     }
                 },

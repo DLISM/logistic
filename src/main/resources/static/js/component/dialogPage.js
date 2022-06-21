@@ -12,7 +12,24 @@ define(function() {
                     autowidth: true,
                     pager: tableId + 'Pager',
                     datafetch: 5,
+                    on: {
+                        onItemClick: function (id) {
+                            var modal = this.getItem(id)
 
+                            var window = this.getTopParentView()
+                            var parentConfig = window.config
+                            var cell = parentConfig.cell
+                            var parentTable = parentConfig.parentTable
+
+                            var field = {}
+                            field[cell.column] = modal
+                            parentTable.updateItem(cell.row, field)
+
+                           setTimeout(function (){
+                               window.close()
+                           }, 0)
+                        }
+                    }
 
                 },
                 {
