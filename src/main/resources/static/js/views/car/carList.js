@@ -4,7 +4,7 @@ define( ['component/listPage', 'collections/models'] ,function (listPage, models
         'resource->/api/car',
         [
             {id:"name", editor:"text"},
-            {id:"model", editor: "combo", options: models}
+            {id:"model", dialogUrl: 'views/model/modelDialog'}
         ]
     )
 })
